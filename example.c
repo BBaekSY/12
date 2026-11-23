@@ -1,29 +1,32 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <string.h>
+#include <math.h>
 
-struct student {
-    int ID;
-    char name[10];
-    double grade;
+struct point {
+    int x;
+    int y;
 };
 
 int main(void)
 {
-    struct student s1 = {24, "Kim", 4.3};
+    struct point p1, p2;
+    double xdiff, ydiff;
+    double dist;
 
-    printf("Before:\n");
-    printf("ID: %d\n", s1.ID);
-    printf("Name: %s\n", s1.name);
-    printf("Grade: %.1f\n", s1.grade);
+    printf("Input p1 coordinate (x y): ");
+    if (scanf("%d %d", &p1.x, &p1.y) != 2)
+        return 1;
 
-    s1.ID = 123456;
-    strcpy(s1.name, "Baek");
-    s1.grade = 4.2;
+    printf("Input p2 coordinate (x y): ");
+    if (scanf("%d %d", &p2.x, &p2.y) != 2)
+        return 1;
 
-    printf("\nAfter:\n");
-    printf("ID: %d\n", s1.ID);
-    printf("Name: %s\n", s1.name);
-    printf("Grade: %.1f\n", s1.grade);
+    xdiff = (double)p1.x - p2.x;
+    ydiff = (double)p1.y - p2.y;
+
+    dist = sqrt(xdiff * xdiff + ydiff * ydiff);
+
+    printf("Distance: %.2f\n", dist);
 
     return 0;
 }
